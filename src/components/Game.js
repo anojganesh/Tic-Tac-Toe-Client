@@ -54,6 +54,7 @@ function Game({ name1, name2, value }) {
       document.getElementById("requeueBtn").disabled = false;
       document.getElementById("btnloading").style.display = "none";
       document.getElementById("menuBtn").style.display = "none";
+      return null;
     });
   };
 

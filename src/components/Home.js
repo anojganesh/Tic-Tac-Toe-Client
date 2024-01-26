@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import loadingGif from "../assets/loading-gif (1).gif";
 import io from "socket.io-client";
 function Home() {
