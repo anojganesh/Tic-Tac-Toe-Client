@@ -29,10 +29,6 @@ function Home() {
     document.getElementById("find").disabled = false;
   });
 
-  const updateName = (event) => {
-    setPlayer(event.target.value);
-  };
-
   return (
     <div id = "canvas">
       <div className="row row3">
@@ -50,7 +46,6 @@ function Home() {
         <div className="col-md-12">
           <button
             onClick={(event) => {
-              updateName(event);
               verifyGame();
             }}
             id="find"

@@ -11,7 +11,6 @@ function Game({ name1, name2, value }) {
   const [turn, setTurn] = useState("X");
   useEffect(() => {
     setName1(name1);
-    setName2(name2);
     setValue(value);
   }, [name1, name2, value]);
 
