@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import loadingGif from "../assets/loading-gif (1).gif";
-import Axios from "axios";
 import io from "socket.io-client";
 function Home() {
   /*https://cs.torontomu.ca/~a3ganesh/Tic-Tac-Toe-v1/server/src/index.js*/
   /*http://localhost:3001*/
   const server = "https://cs.torontomu.ca/~a3ganesh/Tic-Tac-Toe-v1/server/src/index.js";
-  const [player, setPlayer] = useState("");
   const socket = io(server);
-  const loading = document.getElementById("loading");
   const verifyGame = async () => {
     let name = "";
     name = document.getElementById("name").value;

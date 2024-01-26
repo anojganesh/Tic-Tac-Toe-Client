@@ -7,7 +7,6 @@ function Game({ name1, name2, value }) {
   /*https://cs.torontomu.ca/~a3ganesh/Tic-Tac-Toe-v1/src/index.js*/
   const server = "https://cs.torontomu.ca/~a3ganesh/Tic-Tac-Toe-v1/src/index.js";
   const [myName, setName1] = useState(name1);
-  const [oppName, setName2] = useState(name2);
   const [myValue, setValue] = useState(value);
   const [turn, setTurn] = useState("X");
   useEffect(() => {
@@ -34,7 +33,7 @@ function Game({ name1, name2, value }) {
     for (let i = e.allPlayersArray.length - 1; i >= 0; i--) {
       //reverse indexing
       let obj = e.allPlayersArray[i];
-      if (obj.p1.name == `${name1}` || obj.p2.name == `${name1}`) {
+      if (obj.p1.name === `${name1}` || obj.p2.name === `${name1}`) {
         foundObj = obj;
         break;
       }
@@ -66,20 +65,20 @@ function Game({ name1, name2, value }) {
     console.log(e.gamePlayers);
     let p1Id = e.gamePlayers.p1.move;
     let p2Id = e.gamePlayers.p2.move;
-    if (myName == e.gamePlayers.p1.name || myName == e.gamePlayers.p2.name) {
+    if (myName === e.gamePlayers.p1.name || myName === e.gamePlayers.p2.name) {
       console.log("playing got through");
-      if (e.gamePlayers.sum % 2 == 0) {
+      if (e.gamePlayers.sum % 2 === 0) {
         setTurn("X");
       } else {
         setTurn("O");
       }
-      if (p1Id != "") {
+      if (p1Id !== "") {
         updateButtons(p1Id, "X");
-      } else if (p2Id != "") {
+      } else if (p2Id !== "") {
         updateButtons(p2Id, "O");
       }
       if (!checkWin()) {
-        if (e.gamePlayers.sum == 9) {
+        if (e.gamePlayers.sum === 9) {
           //tie
           socket.off("playing");
           setTimeout(function () {
@@ -130,7 +129,7 @@ function Game({ name1, name2, value }) {
       idButtons.push(idArr);
     }
     let oppValue = "";
-    myValue == "X" ? (oppValue = "O") : (oppValue = "X");
+    myValue === "X" ? (oppValue = "O") : (oppValue = "X");
     if (
       diagonalCheck(buttons, myValue) ||
       horizontalCheck(buttons, myValue) ||
@@ -169,9 +168,9 @@ function Game({ name1, name2, value }) {
       let toColor = [];
       const row = Number(buttons.length);
       for (let i = 0; i < row; i++) {
-        if (buttons[i][i] != value) {
+        if (buttons[i][i] !== value) {
           break;
-        } else if (i == row - 1) {
+        } else if (i === row - 1) {
           toColor.push(idButtons[i][i]);
           colorButtons(toColor);
           return true;
@@ -181,9 +180,9 @@ function Game({ name1, name2, value }) {
       }
       toColor = [];
       for (let i = 0; i < row; i++) {
-        if (buttons[i][row - i - 1] != value) {
+        if (buttons[i][row - i - 1] !== value) {
           break;
-        } else if (i == row - 1) {
+        } else if (i === row - 1) {
           toColor.push(idButtons[i][row - i - 1]);
           colorButtons(toColor);
           return true;
@@ -199,9 +198,9 @@ function Game({ name1, name2, value }) {
       const row = Number(buttons.length);
       for (let i = 0; i < row; i++) {
         for (let j = 0; j < row; j++) {
-          if (buttons[i][j] != value) {
+          if (buttons[i][j] !== value) {
             break;
-          } else if (j == row - 1) {
+          } else if (j === row - 1) {
             toColor.push(idButtons[i][j]);
             colorButtons(toColor);
             return true;
@@ -219,9 +218,9 @@ function Game({ name1, name2, value }) {
       const row = Number(buttons.length);
       for (let i = 0; i < row; i++) {
         for (let j = 0; j < row; j++) {
-          if (buttons[j][i] != value) {
+          if (buttons[j][i] !== value) {
             break;
-          } else if (j == row - 1) {
+          } else if (j === row - 1) {
             toColor.push(idButtons[j][i]);
             colorButtons(toColor);
             return true;
@@ -239,6 +238,7 @@ function Game({ name1, name2, value }) {
   const getMenu = () => {
     Array.from(document.getElementById("cont").children).map((button) => {
       button.disabled = false;
+      return null;
     });
     socket.emit("getmenu", { name: myName });
   };
@@ -302,7 +302,7 @@ function Game({ name1, name2, value }) {
         <div className="col-sm-6 replay">
           <button onClick={getRequeue} id="requeueBtn">
             Requeue
-            <img id="btnloading" src={loading} />
+            <img id="btnloading" src={loading} alt="loading"/>
           </button>
         </div>
         <div className="col-sm-6 replay">

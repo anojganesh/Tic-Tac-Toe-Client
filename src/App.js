@@ -1,5 +1,4 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Title from "./components/Title";
 import Game from "./components/Game";
@@ -37,22 +36,22 @@ function App() {
       for (let i = allPlayersArray.length - 1; i >= 0; i--) {
         //reverse indexing
         let obj = allPlayersArray[i];
-        if (obj.p1.name == `${name}` || obj.p2.name == `${name}`) {
+        if (obj.p1.name === `${name}` || obj.p2.name === `${name}`) {
           foundObj = obj;
           break;
         }
       }
       if (foundObj) {
-        if (foundObj.p1.name == foundObj.p2.name) {
+        if (foundObj.p1.name === foundObj.p2.name) {
           alert("Match aborted: Same name as opponent!");
           document.getElementById("name").value = "";
           document.getElementById("find").disabled = false;
           document.getElementById("loading").style.display = "none";
         } else {
-          foundObj.p1.name == `${name}`
+          foundObj.p1.name === `${name}`
             ? (oppName = foundObj.p2.name)
             : (oppName = foundObj.p1.name);
-          foundObj.p1.name == `${name}`
+          foundObj.p1.name === `${name}`
             ? (value = foundObj.p1.value)
             : (value = foundObj.p2.value);
           setPName1(name);
@@ -66,7 +65,7 @@ function App() {
 
 
   socket.on("getmenu", (e) => {
-    if (pName1 == e.name) {
+    if (pName1 === e.name) {
       setDisplayGame(false);
     }
   });
