@@ -1,1 +1,5 @@
-/*        https://cs.torontomu.ca:3001/:splat  200
+[[redirects]]
+from = "/*"
+to = "https://cs.torontomu.ca:3001/:splat"
+status = 200
+
