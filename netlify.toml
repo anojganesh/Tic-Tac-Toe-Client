@@ -1,5 +1,5 @@
 [[redirects]]
 from = "/*"
-to = "https://cs.torontomu.ca:3001/:splat"
+to = "https://cs.torontomu.ca/:splat"
 status = 200
 
